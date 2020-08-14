@@ -26,8 +26,9 @@ public class Robot extends TimedRobot {
    */
   @Override
   public void robotInit() {
-    HatchLatcher.getInstance();
+    //HatchLatcher.getInstance();
     OI.getInstance();
+    Intake.getInstance();
   }
 
   /**
