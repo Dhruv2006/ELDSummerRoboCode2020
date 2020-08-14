@@ -40,6 +40,7 @@ public class Robot extends TimedRobot {
    */
   @Override
   public void robotPeriodic() {
+    CommandScheduler.getInstance().run();
   }
 
   /**
@@ -65,6 +66,7 @@ public class Robot extends TimedRobot {
   public void autonomousPeriodic() {
         // Put custom auto code here
         // Put default auto code here
+      CommandScheduler.getInstance().run();
     }
 
   /**
@@ -72,13 +74,15 @@ public class Robot extends TimedRobot {
    */
   @Override
   public void teleopInit() {
+    CommandScheduler.getInstance().cancelAll();
   }
 
   /**
    * This function is called periodically during operator control.
    */
   @Override
-  public void teleopPeriodic() {
+  public void teleopPeriodic() {   
+    CommandScheduler.getInstance().run();
   }
 
   /**
