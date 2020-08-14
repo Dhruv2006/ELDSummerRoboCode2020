@@ -13,6 +13,6 @@ public class ToggleIntakeSolenoid extends InstantCommand {
     }
     
     public void initialize() {
-        Intake.getInstance().getIntakeSolenoid().set(toggle(Intake.getInstance().getIntakeSolenoid()));
+        Intake.getInstance().getIntakeSolenoid().set(Intake.getInstance().toggle(Intake.getInstance().getIntakeSolenoid()));
     }
 }
