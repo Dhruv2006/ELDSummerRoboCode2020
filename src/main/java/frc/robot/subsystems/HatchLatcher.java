@@ -1,6 +1,7 @@
+package frc.robot.subsystems;
+import edu.wpi.first.wpilibj2.command.SubsystemBase;
 import edu.wpi.first.wpilibj.DoubleSolenoid;
 import edu.wpi.first.wpilibj.DoubleSolenoid.Value;
-import jdk.nashorn.internal.objects.annotations.Getter;
 
 public class HatchLatcher extends SubsystemBase {
     
@@ -9,18 +10,20 @@ public class HatchLatcher extends SubsystemBase {
 // move this stuff to robot map
     static final int FORWARD_CHANNEL = 0;
     static final int REVERSE_CHANNEL = 0;
+
+    private static HatchLatcher instance;
     
-// 
+//
     private HatchLatcher() {
         flower = new DoubleSolenoid(FORWARD_CHANNEL, REVERSE_CHANNEL);
         extender = new DoubleSolenoid(FORWARD_CHANNEL, REVERSE_CHANNEL);
     }
 
-    public DoubleSolenoid.Value toggle() {
-        if(flower.get() == Value.kForward) {
+    public DoubleSolenoid.Value toggle(DoubleSolenoid solenoid) {
+        if(solenoid.get() == Value.kForward) {
             return (Value.kReverse);
         }
-        else if(flower.get() == Value.kReverse) {
+        else if(solenoid.get() == Value.kReverse) {
             return (Value.kForward);
         }
         else
@@ -31,11 +34,17 @@ public class HatchLatcher extends SubsystemBase {
     }
 
     public DoubleSolenoid getExtender(){
-        return (extender);
+        return extender;
     }
 
     public DoubleSolenoid getFlower(){
-        return (flower);
+        return flower;
+    }
+
+    public static HatchLatcher getInstance() {
+        if(instance == null)
+            instance = new HatchLatcher();
+        return instance;
     }
 
 }
