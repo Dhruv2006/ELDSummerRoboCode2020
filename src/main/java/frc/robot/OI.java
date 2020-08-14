@@ -11,8 +11,8 @@ public class OI {
 
     private static OI instance;
 
-    private final HSGamepad drivergamepad;
-    private final HSGamepad operatorgamepad;
+    private HSGamepad drivergamepad;
+    private HSGamepad operatorgamepad;
 
     private static final int DRIVERPORT = 0;
     private static final int OPERATORPORT = 1;
